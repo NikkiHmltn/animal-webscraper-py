@@ -23,28 +23,32 @@ animalSoup = BeautifulSoup(animalText, features="html.parser")
 
 animalClass = {
     "name": "",
-    "kingdom": "",
-    "phylum": "",
-    "class": "",
-    "order": "",
-    "family": "",
-    "genus": "",
-    "scientific_name": "",
-    "prey": "",
-    "name_of_young": "",
-    "group_behavior": "",
-    "fun_fact": "",
-    "estimated_pop_size": "",
-    "biggest_threat": "",
-    "distinct_feat": "",
-    "other_names": "",
-    "habitat": "",
-    "diet": "",
-    "avg_litter_size": "",
-    "lifestyle": "",
-    "common_name": "",
-    "num_of_species": "",
-    "location": "",
+    "classifications": {
+        "kingdom": "",
+        "phylum": "",
+        "class": "",
+        "order": "",
+        "family": "",
+        "genus": "",
+        "scientific_name": ""
+    },
+    "general_facts": {
+        "prey": "",
+        "name_of_young": "",
+        "group_behavior": "",
+        "fun_fact": "",
+        "estimated_pop_size": "",
+        "biggest_threat": "",
+        "distinct_feat": "",
+        "other_names": "",
+        "habitat": "",
+        "diet": "",
+        "avg_litter_size": "",
+        "lifestyle": "",
+        "common_name": "",
+        "num_of_species": "",
+        "location": ""
+    },
     "top_speed": "",
     "lifespan": "",
     "weight": "",
@@ -66,59 +70,60 @@ animalClass["name"] = animalName
 animalClass["photo"]["credit"] = photoCredit
 animalClass["photo"]["image"] = photoUrl
 
+animalClassification = animalClass["classifications"]
 for i, data in enumerate(classData):
     if i == 0:
-        animalClass["kingdom"] = classData[i].string
+        animalClassification["kingdom"] = classData[i].string
     elif i == 1:
-        animalClass["phylum"] = classData[i].string
+        animalClassification["phylum"] = classData[i].string
     elif i == 2:
-        animalClass["class"] = classData[i].string
+        animalClassification["class"] = classData[i].string
     elif i == 3:        
-        animalClass["order"] = classData[i].string
+        animalClassification["order"] = classData[i].string
     elif i == 4:
-        animalClass["family"] = classData[i].string
+        animalClassification["family"] = classData[i].string
     elif i == 5:
-        animalClass["genus"] = classData[i].string
+        animalClassification["genus"] = classData[i].string
     elif i == 6:
-        animalClass["scientific_name"] = classData[i].string
+        animalClassification["scientific_name"] = classData[i].string
 
-
+animalGenFacts = animalClass["general_facts"]
 factsOne = animalFacts[0].find_all('dd');
 for i, data in enumerate(factsOne):
 
     if i == 0:
-        animalClass["prey"] = factsOne[i].string
+        animalGenFacts["prey"] = factsOne[i].string
     elif i == 1:
-        animalClass["name_of_young"] = factsOne[i].string
+        animalGenFacts["name_of_young"] = factsOne[i].string
     elif i == 2:
-        animalClass["group_behavior"] = factsOne[i].string
+        animalGenFacts["group_behavior"] = factsOne[i].string
     elif i == 3:        
-        animalClass["fun_fact"] = factsOne[i].string
+        animalGenFacts["fun_fact"] = factsOne[i].string
     elif i == 4:
-        animalClass["estimated_pop_size"] = factsOne[i].string
+        animalGenFacts["estimated_pop_size"] = factsOne[i].string
     elif i == 5:
-        animalClass["biggest_threat"] = factsOne[i].string
+        animalGenFacts["biggest_threat"] = factsOne[i].string
     elif i == 6:
-        animalClass["distinct_feat"] = factsOne[i].string
+        animalGenFacts["distinct_feat"] = factsOne[i].string
     elif i == 7:
-        animalClass["other_names"] = factsOne[i].string
+        animalGenFacts["other_names"] = factsOne[i].string
 
 factsTwo = animalFacts[1].find_all('dd');
 for i, data in enumerate(factsTwo):
     if i == 0:
-        animalClass["habitat"] = factsTwo[i].string
+        animalGenFacts["habitat"] = factsTwo[i].string
     elif i == 1:
-        animalClass["diet"] = factsTwo[i].string
+        animalGenFacts["diet"] = factsTwo[i].string
     elif i == 2:
-        animalClass["avg_litter_size"] = factsTwo[i].string
+        animalGenFacts["avg_litter_size"] = factsTwo[i].string
     elif i == 3:        
-        animalClass["lifestyle"] = factsTwo[i].string
+        animalGenFacts["lifestyle"] = factsTwo[i].string
     elif i == 4:
-        animalClass["common_name"] = factsTwo[i].string
+        animalGenFacts["common_name"] = factsTwo[i].string
     elif i == 5:
-        animalClass["num_of_species"] = factsTwo[i].string
+        animalGenFacts["num_of_species"] = factsTwo[i].string
     elif i == 6:
-        animalClass["location"] = factsTwo[i].string
+        animalGenFacts["location"] = factsTwo[i].string
 
 for i, data in enumerate(animalChar):
     if i == 2:
